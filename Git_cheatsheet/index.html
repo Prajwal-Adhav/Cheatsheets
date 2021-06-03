@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Open+Sans:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="prism.js"></script>
+    <title>Git CheatSheet</title>
+</head>
+
+<body>
+    <nav>
+        <span class="logo"> <img src="copy.png" alt=""> </span>
+        <div class="content center">
+            This is a Git CheatSheet for me!
+        </div>
+    </nav>
+    <div class="container">
+        <ol>
+            <li>
+                <h3>Git init</h3>
+                <p>To initialize an empty repository</p>
+                <pre class="language-git"><code>git init</code></pre>
+            </li><br>
+            <li>
+                <h3>Git add</h3>
+                <p>To stage changes to staging area in a git repository</p>
+                <pre class="language-git"><code>git add .</code></pre>
+            </li><br>
+            <li>
+                <h3>Git commit</h3>
+                <p>To commit the changes from staging area into a git repository</p>
+                <pre class="language-git"><code>git commit -m "  "</code></pre>
+            </li><br>
+            <li>
+                <h3>Git verify</h3>
+                <p>To check/validate or verify the remote online repository is a registered git repository is conneccted
+                    to your local repository.</p>
+                <pre class="language-git"><code>git remote -v</code></pre>
+            </li><br>
+            <li>
+                <h3>Git clone</h3>
+                <p>To clone or download an online remote repository</p>
+                <pre class="language-git"><code>git clone remote_repo.git</code></pre>
+            </li><br>
+            <li>
+                <h3>Git push</h3>
+                <p>Use below command if this command doesn't work. <br>To push changes to the registered existing
+                    repository.</p>
+                <pre class="language-git"><code>git push</code></pre>
+            </li><br>
+            <li>
+                <h3>Git push first time to main origin</h3>
+                <p>Use this if the above command doesn't work. <br> To push changes to the registered existing
+                    repository.</p>
+                <pre class="language-git"><code>git push origin main</code></pre>
+            </li><br>
+            <li>
+                <h3>Disconnecting a remote repository</h3>
+                <p>To disconnect a local repository from a connected online existing repository</p>
+                <pre class="language-git"><code>git remote rm origin</code></pre>
+            </li><br>
+            <li>
+                <h3>Create a new repository on command line</h3>
+                <p>To create a new repository using CLI</p>
+                <pre class="language-git"><code>
+                     git init
+                     git commit -m "first commit"
+                     git branch -M main git remote add origin "".git 
+                     git push -u origin main</code></pre>
+            </li><br>
+            <li>
+                <h3>Push an existing repository</h3>
+                <p>To push an existing repository from the CLI</p>
+                <pre class="language-git"><code>
+                    git remote add origin "".git
+                    git branch -M main
+                    git push -u origin main
+                </code></pre>
+            </li><br>
+            <li>
+                <h3>Existing online repository push error</h3>
+                <p>If an existing online repository display's error while pushing the code use this.</p>
+                <pre class="language-git"><code>
+                    git pull
+                    git push
+                </code></pre>
+            </li><br>
+            <li>
+                <h3>Do this if you encounter with this error.</h3>
+                <p>Another-git-process-seems-to-be-running-in-this-repository.</p>
+                <pre class="language-git"><code>rm -f "".git/index.lock</code></pre>
+                Such problems generally occur when you execute two git commands simultaneously; maybe one from the
+                command prompt and one from an IDE. <br>
+                <a style="color:#4b00ff;"
+                    href="https://stackoverflow.com/questions/38004148/another-git-process-seems-to-be-running-in-this-repository">Refer
+                    this for extra help</a><br>
+            </li><br>
+            <li>
+                <h3>Undoing Things.</h3>
+                <p>At any stage, you may want to undo something. Here, we’ll review a few basic tools for undoing
+                    changes that you’ve made. Be careful, because you can’t always undo some of these undos. This is one
+                    of the few areas in Git where you may lose some work if you do it wrong. <br>
+
+                    One of the common undos takes place when you commit too early and possibly forget to add some files,
+                    or you mess up your commit message. If you want to redo that commit, make the additional changes you
+                    forgot, stage them, and commit again using the --amend option:.</p><br>
+                <pre class="language-git"><code>git commit --amend</code></pre>
+                <p>This command takes your staging area and uses it for the commit. If you’ve made no changes since your
+                    last commit (for instance, you run this command immediately after your previous commit), then your
+                    snapshot will look exactly the same, and all you’ll change is your commit message.</p>
+                <p>As an example, if you commit and then realize you forgot to stage the changes in a file you wanted to
+                    add to this commit, you can do something like this:</p><br>
+                <pre class="language-git">
+                        $ git commit -m 'Initial commit'
+                        $ git add forgotten_file
+                        $ git commit --amend
+                        <code></code></pre>
+                <p>You end up with a single commit — the second commit replaces the results of the first.</p>
+            </li><br>
+            <li>
+                <h3>Unstaging a Staged File.</h3>
+                <p>The next two sections demonstrate how to work with your staging area and working directory changes.
+                    The nice part is that the command you use to determine the state of those two areas also reminds you
+                    how to undo changes to them. For example, let’s say you’ve changed two files and want to commit them
+                    as two separate changes, but you accidentally type git add * and stage them both. How can you
+                    unstage one of the two? The git status command reminds you:.</p><br>
+                <pre class="language-git"><code>
+                    $ git add *
+                    $ git status                    
+                    On branch master
+                    Changes to be committed:
+                    (use "git reset HEAD <file>..." to unstage)
+
+                        renamed:    README.md -> README
+                        modified:   CONTRIBUTING.md
+
+                </code></pre>
+                <pre class="language-git"><code>
+                    $ git reset HEAD CONTRIBUTING.md
+                    Unstaged changes after reset:
+                    M	CONTRIBUTING.md
+                    $ git status                    
+                    On branch master
+                    Changes to be committed:
+                    (use "git reset HEAD <file>..." to unstage)
+
+                        renamed:    README.md -> README
+
+                    Changes not staged for commit:
+                    (use "git add <file>..." to update what will be committed)
+                    (use "git checkout -- <file>..." to discard changes in working directory)
+
+                        modified:   CONTRIBUTING.md
+                </code></pre>
+                <p>The command is a bit strange, but it works. The CONTRIBUTING.md file is modified but once again
+                    unstaged.</p><br>
+            </li><br>
+            <li>
+                <h3>Unmodifying a Modified File</h3>
+                <p>What if you realize that you don’t want to keep your changes to the CONTRIBUTING.md file? How can you
+                    easily unmodify it — revert it back to what it looked like when you last committed (or initially
+                    cloned, or however you got it into your working directory)? Luckily, git status tells you how to do
+                    that, too. In the last example output, the unstaged area looks like this:</p>
+                <pre class="language-git"><code>
+                    Changes not staged for commit:
+                    (use "git add <file>..." to update what will be committed)
+                    (use "git checkout -- <file>..." to discard changes in working directory)
+
+                        modified:   CONTRIBUTING.md                 
+                </code></pre><br>
+                <p>It tells you pretty explicitly how to discard the changes you’ve made. Let’s do what it says:</p><br>
+                <pre class="language-git"><code>
+                    git checkout -- CONTRIBUTING.md
+                    git status
+                    On branch master
+                    Changes to be committed:
+                    (use "git reset HEAD <file>..." to unstage)
+
+                        renamed:    README.md -> README
+                </code></pre>
+            </li><br>
+            <li>
+                <h3>Checking the log of Git commits</h3>
+                <p>To check the log of the commits to your Git repository, type</p>
+                <pre class="language-git"><code>git log --oneline</code></pre>
+            </li><br>
+            <li>
+                <h3>Checking out a file from an earlier commit</h3>
+                <p>To check out the index.html from the second commit, find the number of the second commit using the
+                    git log, and then type the following at the prompt:
+                </p>
+                <pre class="language-git"><code>git checkout "second commit's number" file.html</code></pre>
+            </li><br>
+            <li>
+                <h3>Resetting the Git repository
+                </h3>
+                <p>To discard the effect of the previous operation and restore index.html to its state at the end of the
+                    third commit, type:
+                </p>
+                <pre class="language-git"><code>git reset HEAD index.html</code></pre>
+                <p>Then type the following at the prompt:</p>
+                <pre class="language-git"><code>git checkout -- index.html</code></pre>
+                <p>You can also use git reset to reset the staging area to the last commit without disturbing the
+                    working <br>
+                    <a
+                        href="https://www.coursera.org/learn/bootstrap-4/supplement/cgWKo/exercise-instructions-basic-git-commands">For
+                        more help refer this.</a>
+                </p>
+            </li><br>
+            <li>
+                <h3>If you encounter this error</h3>
+                <p>fatal: The current branch master has no upstream branch. <br>
+                    To push the current branch and set the remote as upstream, use</p>
+                <pre class="language-git"><code>git push --set-upstream origin master</code></pre>
+            </li><br>
+            <li>
+                <h3>Deleting a Git Branch Both Locally and Remotely.</h3><br>
+                <p>It is common for a Git repo to have different branches. They are a great way to work on different
+                    features and fixes while isolating the new code from the main <br>
+                    Repos often have a master branch for the main codebase and developers create other branches to work
+                    on different features.
+                    Once work is completed on a feature, it is often recommended to delete the branch.
+                </p><br>
+                <h3><strong>Deleting a branch LOCALLY</strong></h3>
+                Delete a branch with..
+                <pre class="language-git"><code>git branch -d "branch_name"</code></pre>
+                <p>Use -D instead if you want to force the branch to be deleted, even if it hasn't been pushed or merged
+                    yet.The branch is now deleted <br>
+                    Git will not let you delete the branch you are currently on so you must make sure to checkout a
+                    branch that you are NOT deleting. For example: <code
+                        style="color: #00ff60;">git checkout master</code>
+                <h3>Deleting a branch REMOTELY</h3>
+                <p>Here's the command to delete a branch remotely: </p>
+                <pre class="language-git"><code>git push "remote.git" --delete <branch></branch></code></pre>
+                <p>For example: <code style="color: #00ff60;">git push origin --delete fix/authentication</code> </p>
+                <p>You can also use this shorter command to delete a branch remotely: <code
+                        style="color: #00ff60;">git push "remote.git" :"branch"</code> </p>
+                </p>
+            </li><br>
+        </ol>
+    </div>
+</body>
+
+</html>
+
+<!-- press shift + 1 for creating boiler plate -->
+<!-- Modern-job-portal-using-php-and-mysql -->
